@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Subjects by teacher</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+    <h1 th:text="${teacher.name}"></h1>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Hours</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${teacher.subjects}">
+                <td th:text="${s.id}"></td>
+                <td th:text="${s.title}"></td>
+                <td th:text="${s.hours}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <form action="add_subject" method="post">
+        <select>
+            <option value="0">select option</option>
+            <option th:each="subj : ${allsubjects}" th:value="${subj.id}" th:text="${subj}"></option>
+        </select>
+        <input type="hidden" name="teacher_id" th:value="${teacher.id}">
+        <input type="submit" value="add"/>
+    </form>
+</body>
+</html>
