@@ -23,8 +23,8 @@
             </tr>
         </tbody>
     </table>
-    <form action="add_subject" method="post">
-        <select>
+    <form action="../add_subject" method="post">
+        <select name="subject">
             <option value="0">select option</option>
             <option th:each="subj : ${allsubjects}" th:value="${subj.id}" th:text="${subj}"></option>
         </select>
